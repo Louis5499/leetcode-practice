@@ -5,6 +5,9 @@ public:
         int maxProf = maxProd;
         
         for (int i=1; i<nums.size(); i++){
+            
+            // When incoming element is negative, maxProd * neg element would become neg.
+            // in order to keep maxProd to be max since past, we need to swap minProd & maxProd
             if (nums[i] < 0) {
                 swap(minProd, maxProd);
             }
