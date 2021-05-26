@@ -1,33 +1,23 @@
-class Node {
-    public:
-        int val;
-        Node *next;
-        Node(int value) {
-            val = value;
-            next = NULL;
-        }
-};
-
 class Vector2D {
 public:
-    Node *node = new Node(-1), *head = node;
+    vector<vector<int>>::iterator beg, end;
+    int j=0;
     Vector2D(vector<vector<int>>& vec) {
-        for (auto perVec: vec) {
-            for (auto element: perVec) {
-                Node *newNode = new Node(element);
-                node->next = newNode;
-                node = newNode;
-            }
-        }
+        beg = vec.begin();
+        end = vec.end();
     }
     
     int next() {
-        head = head->next;
-        return head->val;
+        hasNext();
+        return (*beg)[j++];
     }
     
     bool hasNext() {
-        return head->next != NULL;
+        while (beg != end && j == (*beg).size()) {
+            beg++;
+            j=0;
+        }
+        return beg != end;
     }
 };
 
