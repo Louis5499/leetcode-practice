@@ -1,6 +1,6 @@
 class HitCounter {
 public:
-    multiset<int> count;
+    queue<int> q;
     /** Initialize your data structure here. */
     HitCounter() {
     }
@@ -8,18 +8,14 @@ public:
     /** Record a hit.
         @param timestamp - The current timestamp (in seconds granularity). */
     void hit(int timestamp) {
-        count.insert(timestamp);
+        q.push(timestamp);
     }
     
     /** Return the number of hits in the past 5 minutes.
         @param timestamp - The current timestamp (in seconds granularity). */
     int getHits(int timestamp) {
-        int sum = 0;
-        int start = max(0, timestamp - 300);
-        for (auto it = count.upper_bound(start); it != count.end() && *it <= timestamp; it++) {
-            sum++;
-        }
-        return sum;
+        while (!q.empty() && q.front() <= timestamp - 300) q.pop();
+        return q.size();
     }
 };
 
