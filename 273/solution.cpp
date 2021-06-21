@@ -9,12 +9,12 @@ const string below_100[8] = {"Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Sev
     }
     
     string intToString(int n) {
-        if (n >= 1000000000)   return intToString(n/1000000000) + " Billion" + intToString(n - 1000000000*(n/1000000000));
-        else if (n >= 1000000) return intToString(n/1000000) + " Million" + intToString(n - 1000000*(n/1000000));
-        else if (n >= 1000)    return intToString(n/1000) + " Thousand" + intToString(n - 1000*(n/1000));
-        else if (n >= 100)     return intToString(n/100) + " Hundred" + intToString(n - 100*(n/100));
-        else if (n >= 20)      return string(" ") + below_100[n/10 - 2] + intToString(n - 10*(n/10));
-        else if (n >= 1)        return string(" ") + below_20[n - 1];
+        if (n >= 1000000000)   return intToString(n/1000000000) + " Billion" + intToString(n%1000000000);
+        else if (n >= 1000000) return intToString(n/1000000) + " Million" + intToString(n%1000000);
+        else if (n >= 1000)    return intToString(n/1000) + " Thousand" + intToString(n%1000);
+        else if (n >= 100)     return intToString(n/100) + " Hundred" + intToString(n%100);
+        else if (n >= 20)      return string(" ") + below_100[n/10 - 2] + intToString(n%10);
+        else if (n >= 1)       return string(" ") + below_20[n - 1];
         else return "";
     }
 };
