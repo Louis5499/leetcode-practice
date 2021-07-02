@@ -11,7 +11,7 @@ public:
         if (start == end) return;
         
         int mid = (start+end)/2;
-        mergeSort(nums, 0, mid);
+        mergeSort(nums, start, mid);
         mergeSort(nums, mid+1, end);
 
         checkCount(nums, start, mid, end);
