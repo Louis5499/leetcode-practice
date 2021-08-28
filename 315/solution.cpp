@@ -26,21 +26,3 @@ public:
         inplace_merge(begin, mid, end);
     }
 };
-
-
-class Solution {
-    typedef vector<pair<int, int>> Pi;
-    typedef Pi::iterator Pit;
-public:
-    vector<int> countSmaller(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> res(n, 0);
-        Pi nums_(n);
-        merge(Pi.begin(), Pi.end(), res);
-        return res;
-    }
-    
-    void merge(Pit start, Pit end, vector<int> &res) {
-        
-    }
-};
